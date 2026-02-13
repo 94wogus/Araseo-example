@@ -1,0 +1,130 @@
+{
+  "graph": {
+    "directed": true,
+    "label": "로그인 플로우",
+    "type": "flowchart",
+    "metadata": {
+      "description": "사용자가 앱에 로그인하는 과정을 표현한 플로우차트",
+      "created_by": "araseo"
+    },
+    "nodes": {
+      "start": {
+        "label": "시작",
+        "metadata": {
+          "shape": "oval",
+          "color": "#4CAF50",
+          "description": "사용자가 앱 실행"
+        }
+      },
+      "login_screen": {
+        "label": "로그인 화면",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3",
+          "description": "이메일/비밀번호 입력 폼 표시"
+        }
+      },
+      "auth_check": {
+        "label": "인증 확인",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3",
+          "description": "입력된 정보로 서버 인증 요청"
+        }
+      },
+      "auth_decision": {
+        "label": "인증 성공?",
+        "metadata": {
+          "shape": "diamond",
+          "color": "#FF9800",
+          "description": "인증 결과 확인"
+        }
+      },
+      "main_screen": {
+        "label": "메인 화면",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3",
+          "description": "사용자 대시보드 표시"
+        }
+      },
+      "error_message": {
+        "label": "에러 메시지",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3",
+          "description": "로그인 실패. 다시 시도해주세요."
+        }
+      },
+      "end": {
+        "label": "종료",
+        "metadata": {
+          "shape": "oval",
+          "color": "#4CAF50",
+          "description": "플로우 종료"
+        }
+      }
+    },
+    "edges": [
+      {
+        "source": "start",
+        "target": "login_screen",
+        "relation": "flows_to",
+        "metadata": {
+          "style": "solid"
+        }
+      },
+      {
+        "source": "login_screen",
+        "target": "auth_check",
+        "relation": "flows_to",
+        "metadata": {
+          "style": "solid"
+        }
+      },
+      {
+        "source": "auth_check",
+        "target": "auth_decision",
+        "relation": "flows_to",
+        "metadata": {
+          "style": "solid"
+        }
+      },
+      {
+        "source": "auth_decision",
+        "target": "main_screen",
+        "relation": "flows_to",
+        "metadata": {
+          "label": "성공",
+          "style": "solid"
+        }
+      },
+      {
+        "source": "auth_decision",
+        "target": "error_message",
+        "relation": "flows_to",
+        "metadata": {
+          "label": "실패",
+          "style": "solid"
+        }
+      },
+      {
+        "source": "main_screen",
+        "target": "end",
+        "relation": "flows_to",
+        "metadata": {
+          "style": "solid"
+        }
+      },
+      {
+        "source": "error_message",
+        "target": "login_screen",
+        "relation": "flows_to",
+        "metadata": {
+          "label": "다시 시도",
+          "style": "dashed"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "enabledPlugins": {
+    "ralph-loop@claude-plugins-official": true
+  },
+  "description": "Araseo-example repository settings - includes ralph-loop plugin for iterative example development"
+}

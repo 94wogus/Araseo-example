@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Araseo UI Mockup Schema (Alternative Format)",
+  "description": "Alternative JSON schema for wireframe-style UI mockups",
+  "type": "object",
+  "required": ["mockup"],
+  "properties": {
+    "mockup": {
+      "type": "object",
+      "required": ["version", "title", "layout"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Schema version"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the mockup"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "style": {
+              "type": "string",
+              "enum": ["wireframe", "high-fidelity", "prototype"]
+            },
+            "theme": {
+              "type": "string"
+            },
+            "device": {
+              "type": "string",
+              "enum": ["desktop", "mobile", "tablet", "responsive"]
+            }
+          }
+        },
+        "layout": {
+          "type": "object",
+          "required": ["type", "sections"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["single-page", "multi-page", "modal", "drawer"]
+            },
+            "sections": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/section"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "section": {
+      "type": "object",
+      "required": ["id", "type", "components"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["header", "footer", "main", "sidebar", "aside", "nav"]
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/component"
+          }
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "container",
+            "image",
+            "heading",
+            "text",
+            "form",
+            "input",
+            "button",
+            "link",
+            "checkbox",
+            "radio",
+            "select",
+            "textarea",
+            "label",
+            "div",
+            "span"
+          ]
+        },
+        "properties": {
+          "type": "object"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/component"
+          }
+        }
+      }
+    }
+  }
+}

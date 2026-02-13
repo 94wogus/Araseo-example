@@ -1,0 +1,167 @@
+{
+  "mockup": {
+    "version": "1.0",
+    "title": "로그인 페이지",
+    "metadata": {
+      "style": "wireframe",
+      "theme": "clean",
+      "device": "desktop"
+    },
+    "layout": {
+      "type": "single-page",
+      "sections": [
+        {
+          "id": "header",
+          "type": "header",
+          "components": [
+            {
+              "type": "container",
+              "metadata": {
+                "alignment": "left"
+              },
+              "children": [
+                {
+                  "type": "image",
+                  "properties": {
+                    "src": "logo.png",
+                    "alt": "Araseo Logo",
+                    "width": "120px"
+                  }
+                },
+                {
+                  "type": "heading",
+                  "properties": {
+                    "level": 1,
+                    "text": "Araseo"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "main",
+          "type": "main",
+          "components": [
+            {
+              "type": "container",
+              "metadata": {
+                "alignment": "center",
+                "maxWidth": "400px"
+              },
+              "children": [
+                {
+                  "type": "heading",
+                  "properties": {
+                    "level": 2,
+                    "text": "로그인"
+                  }
+                },
+                {
+                  "type": "form",
+                  "properties": {
+                    "id": "login-form",
+                    "method": "POST"
+                  },
+                  "children": [
+                    {
+                      "type": "input",
+                      "properties": {
+                        "name": "email",
+                        "label": "이메일",
+                        "placeholder": "your@email.com",
+                        "inputType": "email",
+                        "required": true
+                      }
+                    },
+                    {
+                      "type": "input",
+                      "properties": {
+                        "name": "password",
+                        "label": "비밀번호",
+                        "placeholder": "********",
+                        "inputType": "password",
+                        "required": true
+                      }
+                    },
+                    {
+                      "type": "checkbox",
+                      "properties": {
+                        "name": "remember",
+                        "label": "로그인 유지"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "properties": {
+                        "text": "로그인",
+                        "variant": "primary",
+                        "buttonType": "submit"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "properties": {
+                        "text": "회원가입",
+                        "variant": "secondary",
+                        "buttonType": "button"
+                      }
+                    },
+                    {
+                      "type": "link",
+                      "properties": {
+                        "text": "비밀번호를 잊으셨나요?",
+                        "href": "/forgot-password"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "footer",
+          "type": "footer",
+          "components": [
+            {
+              "type": "text",
+              "properties": {
+                "text": "Copyright © 2024 Araseo"
+              }
+            },
+            {
+              "type": "container",
+              "metadata": {
+                "display": "flex",
+                "gap": "10px"
+              },
+              "children": [
+                {
+                  "type": "link",
+                  "properties": {
+                    "text": "개인정보처리방침",
+                    "href": "/privacy"
+                  }
+                },
+                {
+                  "type": "text",
+                  "properties": {
+                    "text": "|"
+                  }
+                },
+                {
+                  "type": "link",
+                  "properties": {
+                    "text": "이용약관",
+                    "href": "/terms"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

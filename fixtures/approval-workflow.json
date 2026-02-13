@@ -1,0 +1,194 @@
+{
+  "graph": {
+    "directed": true,
+    "label": "문서 결재 워크플로우",
+    "type": "flowchart",
+    "metadata": {
+      "description": "회사 내 문서 승인 프로세스"
+    },
+    "nodes": {
+      "start": {
+        "label": "시작",
+        "metadata": {
+          "shape": "oval",
+          "color": "#4CAF50"
+        }
+      },
+      "create_doc": {
+        "label": "문서 작성",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3"
+        }
+      },
+      "team_leader_review": {
+        "label": "팀장 검토",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3"
+        }
+      },
+      "team_leader_decision": {
+        "label": "승인?",
+        "metadata": {
+          "shape": "diamond",
+          "color": "#FF9800"
+        }
+      },
+      "revision_request": {
+        "label": "수정 의견",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#FF9800"
+        }
+      },
+      "revise_doc": {
+        "label": "문서 수정",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3"
+        }
+      },
+      "dept_head_review": {
+        "label": "부서장 검토",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3"
+        }
+      },
+      "dept_head_decision": {
+        "label": "최종 승인?",
+        "metadata": {
+          "shape": "diamond",
+          "color": "#FF9800"
+        }
+      },
+      "send_back": {
+        "label": "재검토",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#FF9800"
+        }
+      },
+      "archive": {
+        "label": "문서 아카이브",
+        "metadata": {
+          "shape": "cylinder",
+          "color": "#009688"
+        }
+      },
+      "notify": {
+        "label": "알림 발송",
+        "metadata": {
+          "shape": "parallelogram",
+          "color": "#9C27B0"
+        }
+      },
+      "end": {
+        "label": "종료",
+        "metadata": {
+          "shape": "oval",
+          "color": "#4CAF50"
+        }
+      }
+    },
+    "edges": [
+      {
+        "source": "start",
+        "target": "create_doc",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "create_doc",
+        "target": "team_leader_review",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "team_leader_review",
+        "target": "team_leader_decision",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "team_leader_decision",
+        "target": "revision_request",
+        "relation": "flows_to",
+        "directed": true,
+        "metadata": {
+          "label": "반려"
+        }
+      },
+      {
+        "source": "revision_request",
+        "target": "revise_doc",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "revise_doc",
+        "target": "team_leader_review",
+        "relation": "flows_to",
+        "directed": true,
+        "metadata": {
+          "style": "dashed"
+        }
+      },
+      {
+        "source": "team_leader_decision",
+        "target": "dept_head_review",
+        "relation": "flows_to",
+        "directed": true,
+        "metadata": {
+          "label": "승인"
+        }
+      },
+      {
+        "source": "dept_head_review",
+        "target": "dept_head_decision",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "dept_head_decision",
+        "target": "send_back",
+        "relation": "flows_to",
+        "directed": true,
+        "metadata": {
+          "label": "반려"
+        }
+      },
+      {
+        "source": "send_back",
+        "target": "team_leader_review",
+        "relation": "flows_to",
+        "directed": true,
+        "metadata": {
+          "style": "dashed"
+        }
+      },
+      {
+        "source": "dept_head_decision",
+        "target": "archive",
+        "relation": "flows_to",
+        "directed": true,
+        "metadata": {
+          "label": "승인"
+        }
+      },
+      {
+        "source": "archive",
+        "target": "notify",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "notify",
+        "target": "end",
+        "relation": "flows_to",
+        "directed": true
+      }
+    ]
+  }
+}

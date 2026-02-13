@@ -1,0 +1,127 @@
+{
+  "graph": {
+    "directed": true,
+    "label": "간단한 로그인 플로우",
+    "type": "flowchart",
+    "metadata": {
+      "description": "사용자 로그인 프로세스"
+    },
+    "nodes": {
+      "start": {
+        "label": "시작",
+        "metadata": {
+          "shape": "oval",
+          "color": "#4CAF50"
+        }
+      },
+      "input": {
+        "label": "이메일/비밀번호 입력",
+        "metadata": {
+          "shape": "parallelogram",
+          "color": "#9C27B0"
+        }
+      },
+      "verify": {
+        "label": "서버 인증 확인",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3"
+        }
+      },
+      "decision": {
+        "label": "성공 여부?",
+        "metadata": {
+          "shape": "diamond",
+          "color": "#FF9800"
+        }
+      },
+      "dashboard": {
+        "label": "대시보드 이동",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#2196F3"
+        }
+      },
+      "error": {
+        "label": "에러 메시지",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#F44336"
+        }
+      },
+      "end_success": {
+        "label": "종료",
+        "metadata": {
+          "shape": "oval",
+          "color": "#4CAF50"
+        }
+      },
+      "retry": {
+        "label": "재입력",
+        "metadata": {
+          "shape": "rectangle",
+          "color": "#FF9800"
+        }
+      }
+    },
+    "edges": [
+      {
+        "source": "start",
+        "target": "input",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "input",
+        "target": "verify",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "verify",
+        "target": "decision",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "decision",
+        "target": "dashboard",
+        "relation": "flows_to",
+        "directed": true,
+        "metadata": {
+          "label": "성공"
+        }
+      },
+      {
+        "source": "dashboard",
+        "target": "end_success",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "decision",
+        "target": "error",
+        "relation": "flows_to",
+        "directed": true,
+        "metadata": {
+          "label": "실패"
+        }
+      },
+      {
+        "source": "error",
+        "target": "retry",
+        "relation": "flows_to",
+        "directed": true
+      },
+      {
+        "source": "retry",
+        "target": "input",
+        "relation": "flows_to",
+        "directed": true,
+        "metadata": {
+          "style": "dashed"
+        }
+      }
+    ]
+  }
+}

@@ -47,3 +47,15 @@
   1. **Report the resolution details to the user**.
   2. Proceed with merge only after user confirmation.
 - Allowing an outdated commit to land on main without this process is **NEVER allowed**.
+
+## 4. GitHub Multi-Account Authentication
+
+- Two GitHub accounts are registered: `94wogus` (personal) and `94wogus-quantit` (work).
+- The `GITHUB_TOKEN` environment variable is set to `94wogus-quantit` by default.
+- For repos owned by `94wogus`, MUST override `GITHUB_TOKEN` and use `gh` as credential helper:
+  ```bash
+  GITHUB_TOKEN= gh auth switch --user 94wogus
+  GITHUB_TOKEN= gh auth setup-git
+  GITHUB_TOKEN= git push -u origin main
+  ```
+- All git commands for `94wogus`-owned repos MUST be prefixed with `GITHUB_TOKEN=` to bypass the default token.

@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Araseo UI Mockup Schema",
+  "description": "JSON schema for UI mockup visualization in Araseo",
+  "type": "object",
+  "required": ["ui"],
+  "properties": {
+    "ui": {
+      "type": "object",
+      "required": ["type", "title", "components"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["page", "component", "layout"],
+          "description": "Type of UI element"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title or label of the UI"
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Additional metadata about the UI"
+        },
+        "components": {
+          "type": "array",
+          "description": "Collection of UI components",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "label"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier for the component"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "button",
+                  "input",
+                  "text",
+                  "card",
+                  "container",
+                  "image",
+                  "link",
+                  "form",
+                  "header",
+                  "footer",
+                  "navigation"
+                ],
+                "description": "Type of the component"
+              },
+              "label": {
+                "type": "string",
+                "description": "Display label or text content"
+              },
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "position": {
+                    "type": "object",
+                    "properties": {
+                      "row": {
+                        "type": "integer"
+                      },
+                      "col": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "size": {
+                    "type": "string",
+                    "enum": ["small", "medium", "large", "full"]
+                  },
+                  "color": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-Fa-f]{6}$"
+                  },
+                  "variant": {
+                    "type": "string"
+                  },
+                  "placeholder": {
+                    "type": "string"
+                  },
+                  "required": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "children": {
+                "type": "array",
+                "description": "Nested components",
+                "items": {
+                  "$ref": "#/properties/ui/properties/components/items"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

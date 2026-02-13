@@ -1,0 +1,26 @@
+{
+  "name": "araseo-example",
+  "version": "1.0.0",
+  "description": "Example and test data repository for Araseo project",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "araseo",
+    "examples",
+    "fixtures",
+    "testing"
+  ],
+  "author": "Nobi",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/ui": "^1.2.0",
+    "@vitest/coverage-v8": "^1.2.0",
+    "vitest": "^1.2.0",
+    "ajv": "^8.12.0"
+  }
+}

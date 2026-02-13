@@ -62,7 +62,7 @@
           "description": "Collection of edges connecting nodes",
           "items": {
             "type": "object",
-            "required": ["source", "target", "relation", "directed"],
+            "required": ["source", "target", "relation"],
             "properties": {
               "source": {
                 "type": "string",
